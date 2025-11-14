@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard Violenza di genere</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <h1>Dashboard Violenza di genere</h1>
+    </header>
+
+    <main>
+      <section class="table-section">
+        <div class="table-controls">
+          <div class="page-info">
+            <span id="record-count"></span>
+          </div>
+          <div class="pagination">
+            <button id="prev-page" class="btn">&laquo; Precedente</button>
+            <span id="current-page">Pagina 1</span>
+            <button id="next-page" class="btn">Successiva &raquo;</button>
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table id="data-table">
+            <thead>
+              <tr class="filter-row">
+                <th></th>
+                <th><select id="filter-genere" class="filter-input"></select></th>
+                <th><select id="filter-eta" class="filter-input"></select></th>
+                <th><select id="filter-abusante" class="filter-input"></select></th>
+                <th><select id="filter-topics" class="filter-input"></select></th>
+                <th><select id="filter-tipo" class="filter-input"></select></th>
+                <th><select id="filter-ambito" class="filter-input"></select></th>
+              </tr>
+              <tr>
+                <th data-column="id" class="sortable">ID</th>
+                <th data-column="genereVittima" class="sortable">Genere vittima</th>
+                <th data-column="etaVittima" class="sortable">Età vittima</th>
+                <th data-column="abusante" class="sortable">Abusante</th>
+                <th data-column="topics" class="sortable">Topics</th>
+                <th data-column="tipoViolenza" class="sortable">Tipo violenza</th>
+                <th data-column="ambitoViolenza" class="sortable">Ambito violenza</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="chart-section">
+        <div class="chart-header">
+          <h2 id="chart-title">Grafico dati filtrati</h2>
+
+          <div class="chart-selectors">
+            <label>
+              Variabile:
+              <select id="dimension-select">
+                <option value="tipoViolenza">Tipo violenza</option>
+                <option value="genereVittima">Genere vittima</option>
+                <option value="ambitoViolenza">Ambito violenza</option>
+                <option value="abusante">Abusante</option>
+              </select>
+            </label>
+
+          </div>
+
+          <button id="change-chart" class="btn primary">Cambia grafico</button>
+        </div>
+
+        <div class="chart-container">
+          <canvas id="data-chart"></canvas>
+        </div>
+
+        <p id="no-data-message" class="no-data-message" hidden>
+          Nessun dato corrisponde ai filtri selezionati.
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
